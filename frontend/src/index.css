@@ -17,12 +17,7 @@
 
 body {
   @apply font-sans tracking-tight min-h-screen text-zinc-100;
-  background-color: var(--app-bg);
-  background-image:
-    radial-gradient(circle at 10% 15%, rgba(249, 115, 22, 0.09), transparent 35%),
-    radial-gradient(circle at 88% 80%, rgba(245, 158, 11, 0.06), transparent 40%),
-    linear-gradient(180deg, #090b10 0%, #090b10 100%);
-  background-attachment: fixed;
+  background: #050b18;
 }
 
 /* Custom text selection color - orange */

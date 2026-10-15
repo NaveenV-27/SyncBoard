@@ -68,7 +68,7 @@ export default function LandingPage() {
                                 Real-Time Task Management<br />for Modern Teams
                             </h1>
                             <p className="text-lg sm:text-xl md:text-2xl text-zinc-400 font-light max-w-3xl mx-auto leading-relaxed px-4">
-                                Syncly keeps your team aligned with live updates, visual workflows, and seamless collaboration.
+                                SyncBoard keeps your team aligned with live updates, visual workflows, and seamless collaboration.
                             </p>
                         </div>
 
@@ -137,7 +137,7 @@ export default function LandingPage() {
                             Stop fighting your tools
                         </h2>
                         <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto px-4">
-                            Traditional task managers slow you down. Syncly is built for speed.
+                            Traditional task managers slow you down. SyncBoard is built for speed.
                         </p>
                     </motion.div>
 
@@ -259,9 +259,9 @@ export default function LandingPage() {
                         <div className="flex flex-col items-start gap-3">
                             <div className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-lg overflow-hidden bg-black flex items-center justify-center">
-                                    <img src="/logo.png" alt="Syncly Logo" className="w-full h-full object-contain" />
+                                    <img src="/logo.png" alt="SyncBoard Logo" className="w-full h-full object-contain" />
                                 </div>
-                                <span className="app-title text-xl font-bold text-white">Syncly</span>
+                                <span className="app-title text-xl font-bold text-white">SyncBoard</span>
                             </div>
                             <p className="text-sm text-zinc-500">Modern task management for modern teams</p>
                         </div>
@@ -278,7 +278,7 @@ export default function LandingPage() {
                         {/* Copyright */}
                         <div className="text-center md:text-right">
                             <p className="text-sm text-zinc-500">
-                                © {new Date().getFullYear()} Syncly. All rights reserved.
+                                © {new Date().getFullYear()} SyncBoard. All rights reserved.
                             </p>
                         </div>
                     </div>

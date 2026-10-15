@@ -1356,9 +1356,9 @@ export default function Dashboard({ openSettings = false }) {
 
           <Link to="/" className="flex items-center gap-2 group cursor-pointer">
             <div className="w-9 h-9 rounded-xl overflow-hidden bg-black flex items-center justify-center shadow-lg shadow-orange-500/20 group-hover:shadow-orange-500/40 transition-all border border-white/10">
-              <img src="/logo.png" alt="Syncly Logo" className="w-full h-full object-contain" />
+              <img src="/logo.png" alt="SyncBoard Logo" className="w-full h-full object-contain" />
             </div>
-            <span className="text-xl font-bold tracking-tight hidden md:block text-white group-hover:text-orange-100 transition-colors">Syncly</span>
+            <span className="text-xl font-bold tracking-tight hidden md:block text-white group-hover:text-orange-100 transition-colors">SyncBoard</span>
           </Link>
 
           <div className="relative">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UserPlus, Edit2, Check, X, Shield, MoreVertical } from "lucide-react";
+import { UserPlus, Edit2, Check, X, Shield, MoreVertical, Settings } from "lucide-react";
 import { getInitials } from "./TaskCard";
 
 export default function RightSidebar({ team, currentUser, onInvite, onRenameTeam, onManageMember }) {
@@ -47,6 +47,7 @@ export default function RightSidebar({ team, currentUser, onInvite, onRenameTeam
                         <>
                             <h2 className="text-xl font-bold truncate text-zinc-100 tracking-tight">{team.name}</h2>
                             {isAdmin && (
+                                <div className="">
                                 <button
                                     onClick={() => {
                                         setNewName(team.name);
@@ -57,6 +58,17 @@ export default function RightSidebar({ team, currentUser, onInvite, onRenameTeam
                                 >
                                     <Edit2 size={14} />
                                 </button>
+                                <button
+                                    onClick={() => {
+                                        onInvite();
+                                    }}
+                                    className="p-1.5 rounded hover:bg-white/5 opacity-50 hover:opacity-100 transition-all text-zinc-300"
+                                    title="Open Team Settings"
+                                >
+                                    <Settings size={14} />
+                                </button>
+
+                                </div>
                             )}
                         </>
                     )}

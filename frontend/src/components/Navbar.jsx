@@ -22,11 +22,11 @@ export default function Navbar() {
                             <div className="relative">
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-600 to-amber-600 rounded-lg blur opacity-30 group-hover:opacity-50 transition duration-300"></div>
                                 <div className="relative w-9 h-9 rounded-lg overflow-hidden bg-black flex items-center justify-center shadow-lg">
-                                    <img src="/logo.png" alt="Syncly Logo" className="w-full h-full object-contain" />
+                                    <img src="/logo.png" alt="SyncBoard Logo" className="w-full h-full object-contain" />
                                 </div>
                             </div>
                             <span className="app-title text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-zinc-300">
-                                Syncly
+                                SyncBoard
                             </span>
                         </Link>
 

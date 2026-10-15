@@ -79,7 +79,7 @@ export default function Signup() {
       >
         <div className="text-center mb-8">
           <h1 className="app-title text-4xl font-bold mb-2 bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-400">Create Account</h1>
-          <p className="text-zinc-400 font-light">Join Syncly today.</p>
+          <p className="text-zinc-400 font-light">Join SyncBoard today.</p>
         </div>
 
         {error && (

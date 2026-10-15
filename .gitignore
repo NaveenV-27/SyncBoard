@@ -28,3 +28,6 @@ dist-ssr
 
 # Personal-only docs (do not commit)
 PERSONAL_PROJECT_DOC.md
+
+*.md
+!README.md

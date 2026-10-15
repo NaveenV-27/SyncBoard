@@ -1,202 +1,74 @@
-<div align="center">
-  <img src="https://via.placeholder.com/1200x300/09090b/f97316?text=SYNCLY" alt="Syncly Banner" width="100%" />
+# SyncBoard
 
-  <br />
-  <br />
+**GitHub:** https://github.com/NaveenV-27/SyncBoard.git  
+**Author:** Naveen
 
-  **A High-Performance, Real-Time Task Management Platform.**
+## Overview
+SyncBoard is a real‑time task‑management platform that lets teams collaborate on Kanban boards with instant updates. Users can create teams, assign tasks, move columns via drag‑and‑drop, and receive live notifications—all without manual page refreshes.
 
-  [Live Frontend Demo](https://syncly-kush.vercel.app/) • 
-  [Backend API](http://syncly-production-0246.up.railway.app/)
+## Tech Stack
+- **Frontend:** React 19, Vite, Tailwind CSS, Framer Motion, @dnd‑kit (drag‑and‑drop), Pusher‑JS, React Router 7
+- **Backend:** Node.js 18+, Express 5, Prisma ORM with PostgreSQL, Pusher (server), JWT + bcryptjs for auth
+- **Database:** PostgreSQL
+- **Real‑time:** Pusher (managed WebSockets) for optimistic UI updates and broadcasting
 
-</div>
+## Key Features
+- ⚡ Real‑time synchronization via Pusher (task updates, drag‑and‑drop, notifications)
+- 🛡️ Role‑based access control (Admin, Member, Viewer)
+- 🚀 Zero‑signup “recruiter test drive” demo mode
+- 📊 Switch between Kanban board and calendar views
+- 🔔 Live in‑app notification panel
+- 🎨 Glassmorphic UI with micro‑animations
+- 🖱️ Intuitive task cards with priority, due dates, assignees
 
---- 
-
-## 📖 Overview
-
-Syncly is a highly scalable, real-time project management platform built to keep fast-moving teams connected, synchronized, and productive. It combines traditional Kanban workflows with instantaneous live updates, enabling seamless collaboration without constant page refreshes or delays.
-
-Designed with a premium glassmorphic UI, robust role-based access control, and an optimized relational database schema, Syncly is built to be simple enough for personal use and powerful enough for enterprise startups.
-
----
-
-## ✨ Key Features
-
-- **⚡ Real-Time Synchronization:** Sub-millisecond task updates, drag-and-drop movements, and notifications powered by **Pusher** (optimized for serverless environments like Vercel).
-- **🚀 Recruiter Test Drive (Zero-Friction Demo):** Instantly spin up a sandboxed environment pre-populated with dummy users, active tasks, and calendar dates—no signup required.
-- **🛡️ Role-Based Access Control (RBAC):** Granular permissions supporting `Admin`, `Member`, and `Viewer` roles.
-- **📊 Dynamic Visualizations:** Switch seamlessly between interactive Kanban Boards and Calendar Views.
-- **🔔 Live Notifications:** Instant alerting for team invitations, task assignments, and workspace updates.
-- **🎨 Premium UI/UX:** Built with React 19, Tailwind CSS, and Framer Motion for buttery-smooth micro-animations and a sleek glassmorphic aesthetic.
-
----
-
-## 🏗 System Architecture
-
-Syncly follows a decoupled Client-Server architecture, connected via a RESTful API and bi-directional WebSocket tunnels for real-time state synchronization.
-
-```mermaid
-graph TD
-    %% Clients
-    ClientA[Web Client A\nReact/Vite]
-    ClientB[Web Client B\nReact/Vite]
-
-    %% Load Balancing & Routing
-    Vercel[Vercel CDN / Edge]
-    Railway[Railway Deployment]
-
-    %% Backend Services
-    API[Express REST API]
-    Pusher[Pusher Managed Service]
-
-    %% Database Layer
-    Prisma[Prisma ORM]
-    PG[(PostgreSQL DB)]
-
-    %% Connections
-    ClientA -->|Static Assets| Vercel
-    ClientB -->|Static Assets| Vercel
-
-    ClientA <|--| Pusher
-    ClientB <|--| Pusher
-
-    ClientA -->|HTTP Requests| API
-    ClientB -->|HTTP Requests| API
-
-    API --> Pusher
-    API --> Prisma
-    Prisma --> PG
-
-    subgraph Backend Infrastructure
-        Railway
-        API
-        Prisma
-    end
-
-    style PG fill:#336791,stroke:#fff,stroke-width:2px,color:#fff
-    style API fill:#68a063,stroke:#fff,stroke-width:2px,color:#fff
-    style Pusher fill:#300d4f,stroke:#fff,stroke-width:2px,color:#fff
-    style ClientA fill:#61dafb,stroke:#fff,stroke-width:2px,color:#000
-    style ClientB fill:#61dafb,stroke:#fff,stroke-width:2px,color:#000
-```
-
-### Data Flow & Real-Time Sync Strategy
-1. **Optimistic UI Updates:** When a user drags a task, the frontend immediately updates the local state for zero perceived latency.
-2. **Persistent Storage:** A REST API call is made asynchronously to persist the new state to PostgreSQL.
-3. **Broadcasting:** Upon successful commit, the backend emits a targeted **Pusher** event to all *other* active users in that workspace, ensuring their clients re-render the exact same state instantly. This architecture ensures high-performance real-time updates even on serverless platforms like Vercel.
-
----
-
-## 🛠 Tech Stack
-
-| Domain | Technology | Purpose |
-|--------|------------|---------|
-| **Frontend** | React 19, Vite | Core view layer and lightning-fast HMR |
-| **Styling** | Tailwind CSS, Framer Motion | Utility-first styling and fluid micro-animations |
-| **Backend** | Node.js, Express.js | High-performance, unopinionated web server |
-| **Database** | PostgreSQL | ACID-compliant relational data storage |
-| **ORM** | Prisma | Type-safe database access and migration management |
-| **Real-time** | Pusher | Managed WebSockets for serverless/Vercel compatibility |
-| **Auth** | JWT, bcryptjs | Stateless, secure authentication & password hashing |
-| **Hosting** | Vercel, Railway | Edge-network frontend delivery and robust backend hosting |
-
----
-
-## 🚀 Installation & Local Development
-
+## Getting Started
 ### Prerequisites
-- Node.js (v18+ recommended)
-- PostgreSQL (Local instance or remote URI like Supabase/Neon)
+- Node.js ≥ 18
+- PostgreSQL (local or remote URI)
+- Pusher account (for app ID, key, secret, cluster)
 
-### 1. Clone the Repository
+### 1. Clone the repo
 ```bash
-git clone https://github.com/kush11-m/syncly.git
-cd syncly
+git clone https://github.com/NaveenV-27/SyncBoard.git
+cd SyncBoard
 ```
 
-### 2. Backend Setup
+### 2. Backend setup
 ```bash
 cd backend
 npm install
-```
-
-Create a `.env` file in the `backend/` directory:
-```env
-PORT=8000
-DATABASE_URL="postgresql://user:password@localhost:5432/syncly?schema=public"
-JWT_SECRET="your_super_secret_key"
-
-# Pusher Credentials (Required for Vercel)
-PUSHER_APP_ID="your_app_id"
-PUSHER_KEY="your_key"
-PUSHER_SECRET="your_secret"
-PUSHER_CLUSTER="mt1"
-```
-
-Initialize the database schema:
-```bash
-npx prisma db push --accept-data-loss
+# Create backend/.env with:
+# PORT=8000
+# DATABASE_URL="postgresql://user:password@localhost:5432/syncboard?schema=public"
+# JWT_SECRET="your_super_secret_key"
+# PUSHER_APP_ID="your_app_id"
+# PUSHER_KEY="your_key"
+# PUSHER_SECRET="your_secret"
+# PUSHER_CLUSTER="mt1"
+npx prisma db push
 npx prisma generate
+npm start   # runs on http://localhost:8000
 ```
 
-Start the backend server:
+### 3. Frontend setup (new terminal)
 ```bash
-npm start
-```
-
-### 3. Frontend Setup
-In a new terminal window:
-```bash
-cd frontend
+cd ../frontend
 npm install
+# Create frontend/.env (optional) with:
+# VITE_API_URL=http://localhost:8000
+# VITE_PUSHER_KEY=your_pusher_key
+# VITE_PUSHER_CLUSTER=mt1
+npm run dev   # runs on http://localhost:5173
 ```
 
-Start the Vite development server:
-```bash
-npm run dev
-```
+## API Overview (base URL `http://localhost:8000`)
+- **Auth:** `POST /api/signup`, `POST /api/login`, `POST /api/test-login` (demo), `GET /api/me`, `PUT /api/me`
+- **Teams:** `GET /api/teams`, `POST /api/teams`, `POST /api/teams/join`, `POST /api/teams/approve`, `POST /api/teams/reject`, `PUT /api/teams/role`, `GET /api/teams/:teamId`
+- **Tasks:** `POST /api/tasks`, `GET /api/tasks/team/:teamId`, `PUT /api/tasks/:taskId`, `DELETE /api/tasks/:taskId`
+- **Notifications:** `GET /api/notifications`, `PUT /api/notifications/:id/read`, `PUT /api/notifications/read-all`, `DELETE /api/notifications/:id`
 
-The application will be available at `http://localhost:5173` (or the port Vite assigns).
-
----
-
-## 📂 Project Structure
-
-```text
-syncly/
-├── backend/                  # Node.js Express Application
-│   ├── prisma/               # Database Schema & Migrations
-│   ├── users/                # Authentication & User Management
-│   ├── teams/                # Workspaces & Role-Based Access
-│   ├── tasks/                # Core Kanban Logic
-│   ├── notifications/        # Activity Feed & Alerting
-│   ├── utils/                # Middlewares (Auth check) & Helpers
-│   └── server.js             # Entry point & Socket.IO initialization
-│
-├── frontend/                 # React 19 SPA
-│   ├── src/
-│   │   ├── components/       # Reusable UI elements (Cards, Modals)
-│   │   ├── pages/            # Core views (Dashboard, Login, Landing)
-│   │   ├── utils/            # Helper functions & URL formatters
-│   │   ├── App.jsx           # Routing & Context Providers
-│   │   └── main.jsx          # React DOM mounting
-│   ├── index.html            # Vite entry point
-│   └── tailwind.config.js    # Theme tokens & design system rules
-```
+## License
+MIT License – see `LICENSE` file.
 
 ---
-
-## 🔮 Future Roadmap
-
-- **AI-Powered Task Suggestions:** Auto-categorize and prioritize tasks based on project velocity.
-- **Timeline / Gantt View:** Expand visualization options beyond Kanban and Calendar.
-- **Deep Analytics Dashboard:** Burn-down charts and team velocity tracking.
-- **Webhooks & Integrations:** Slack/Discord notifications and GitHub commit linking.
-
----
-
-## 📜 License & Author
-
-**License:** MIT License  
-**Author:** Built by Kushagra Maheshwari
+*If you have questions or want to contribute, open an issue or pull request on the GitHub repository above.*
